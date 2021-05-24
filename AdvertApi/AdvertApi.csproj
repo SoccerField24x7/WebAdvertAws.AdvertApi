@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.0.26" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AdvertApi.Models\AdvertApi.Models.csproj" />
   </ItemGroup>
 
