@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Jesse Quijano</Authors>
+    <PackageProjectUrl>https://github.com/SoccerField24x7/WebAdvertAws.AdvertApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/SoccerField24x7/WebAdvertAws.AdvertApi</RepositoryUrl>
+    <PackageId>CodeNja.AdvertApi.Models</PackageId>
   </PropertyGroup>
 
 </Project>
