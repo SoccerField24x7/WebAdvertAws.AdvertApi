@@ -30,6 +30,7 @@ namespace AdvertApi
             services.AddAutoMapper(typeof(Startup));
             services.AddTransient<IAdvertStorageService, DynamoDBAdvertStorage>();
             services.AddControllers();
+            services.AddHealthChecks();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,11 +42,9 @@ namespace AdvertApi
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
+            app.UseHealthChecks("/health");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
