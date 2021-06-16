@@ -26,7 +26,7 @@ namespace AdvertApi.Services
             var dbModel = _mapper.Map<AdvertDbModel>(model);
             using (var client = new AmazonDynamoDBClient()) // because credentials in OS and we have appsettings, no params needed
             {
-                dbModel.Id = new Guid().ToString();
+                dbModel.Id = Guid.NewGuid().ToString();
                 dbModel.CreationDateTime = DateTime.UtcNow;
                 dbModel.Status = AdvertStatus.Pending;
 
