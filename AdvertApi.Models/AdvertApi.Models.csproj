@@ -1,11 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Jesse Quijano</Authors>
     <PackageProjectUrl>https://github.com/SoccerField24x7/WebAdvertAws.AdvertApi</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SoccerField24x7/WebAdvertAws.AdvertApi</RepositoryUrl>
     <PackageId>CodeNja.AdvertApi.Models</PackageId>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <FileVersion>1.0.0.2</FileVersion>
+    <Version>1.0.2</Version>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
 </Project>
