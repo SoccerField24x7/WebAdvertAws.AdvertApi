@@ -77,14 +77,14 @@ namespace AdvertApi.Controllers
         private async Task RaiseAdvertConfirmedMessage(ConfirmAdvertModel model)
         {
             var topicArn = _config.GetValue<string>("TopicArn");
-            var dbModel = await _advertStorageService.GetById(model.Id);
+            var advertModel = await _advertStorageService.GetById(model.Id);
 
             using (var client = new AmazonSimpleNotificationServiceClient())
             {
                 var message = new AdvertConfirmedMessage
                 {
                     Id = model.Id,
-                    Title = dbModel.Title
+                    Title = advertModel.Title
                 };
 
                 var messageJson = JsonConvert.SerializeObject(message);
