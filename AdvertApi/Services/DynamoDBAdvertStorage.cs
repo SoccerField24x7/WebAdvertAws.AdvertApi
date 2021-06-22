@@ -72,7 +72,19 @@ namespace AdvertApi.Services
             }
         }
 
-        public async Task<AdvertDbModel> GetById(string id)
+        public async Task<List<AdvertModel>> GetAll()
+        {
+            using (var client = new AmazonDynamoDBClient())
+            {
+                using (var context = new DynamoDBContext(client))
+                {
+                    var allItems = await context.ScanAsync<AdvertDbModel>(new List<ScanCondition>()).GetRemainingAsync();
+                    return allItems.Select(item => _mapper.Map<AdvertModel>(item)).ToList();
+                }
+            }
+        }
+
+        public async Task<AdvertModel> GetById(string id)
         {
             using (var client = new AmazonDynamoDBClient())
             {
@@ -84,7 +96,7 @@ namespace AdvertApi.Services
                         throw new KeyNotFoundException($"A record with ID={id} was not found.");
                     }
 
-                    return record;
+                    return _mapper.Map<AdvertModel>(record);
                 }
             }
         }
