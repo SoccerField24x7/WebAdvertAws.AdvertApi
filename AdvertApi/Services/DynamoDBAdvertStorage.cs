@@ -96,7 +96,18 @@ namespace AdvertApi.Services
                         throw new KeyNotFoundException($"A record with ID={id} was not found.");
                     }
 
-                    return _mapper.Map<AdvertModel>(record);
+                    AdvertModel model;
+
+                    try
+                    {
+                        model = _mapper.Map<AdvertModel>(record);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw;
+                    }
+
+                    return model;
                 }
             }
         }
