@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Cors;
 
 namespace AdvertApi.Controllers
 {
@@ -72,6 +73,35 @@ namespace AdvertApi.Controllers
             }
 
             return new OkResult();
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
+        public async Task<IActionResult> Get(string id)
+        {
+            try
+            {
+                var advert = await _advertStorageService.GetById(id);
+                return new JsonResult(advert);
+            }
+            catch (KeyNotFoundException)
+            {
+                return new NotFoundResult();
+            }
+            catch (Exception)
+            {
+                return new StatusCodeResult(500);
+            }
+        }
+
+        [HttpGet]
+        [Route("all")]
+        [ProducesResponseType(200)]
+        public async Task<IActionResult> All()
+        {
+            return new JsonResult(await _advertStorageService.GetAll());
         }
 
         private async Task RaiseAdvertConfirmedMessage(ConfirmAdvertModel model)
